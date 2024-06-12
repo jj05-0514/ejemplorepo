@@ -7,3 +7,9 @@
 body{
     background-color: aquamarine;
 }
+
+.texto{
+    background-color: cadetblue;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding: 20px;
+}
