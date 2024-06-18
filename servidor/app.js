@@ -1,9 +1,5 @@
 const saludar=require('./modulosfuncionales/saludo')
+const sumar=require('./modulosfuncionales/operaciones')
 
-function sumar(a,b)
-{ let resultado;
-    resultado=a+b;
-    return resultado;
-}
 console.log(sumar(10,35));
 console.log(saludar('Juan'));
