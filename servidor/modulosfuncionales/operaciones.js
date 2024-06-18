@@ -16,9 +16,9 @@ function multiplicar(a,b){
     resultado=a*b;
     return resultado;
 }
-const numeros=[1,5,7,9,3,12]];
+const numeros=[1,5,7,9,3,12];
 
     module.exports={sumar:sumar,}
     restar:restar,
-    multiplicar:multiplicar,
-    numeros:numeros]
+    multiplicar;multiplicar,
+    numeros;numeros
