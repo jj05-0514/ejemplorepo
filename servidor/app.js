@@ -2,8 +2,6 @@ const saludar=require('./modulosfuncionales/saludo')
 const operaciones=require('./modulosfuncionales/operaciones')
 const {multiplicar}=require('./modulosfuncionales/operaciones')
 const fs=require('fs')
-
-
 let inicio=100;
 let fin=200;
 let añosTotales=operaciones.sumar(inicio,fin);
@@ -45,3 +43,35 @@ fs.readFile('./modulosfuncionales/archivo.txt', function(error, contenido){
         console.log(contenido.toString());
     }
 });
+
+fs.rename('./modulosfuncionales/archivo.txt','./modulosfuncionales/archivonuevo.txt',function(error){
+    if(error){
+        console.log(error);
+    }else{
+        console.log('El archivo fue renombrado');
+    }
+})
+
+fs.readFile('./modulosfuncionales/archivonuevo.txt', function(error, contenido){
+    if(error){
+        console.log(error);
+    }else{
+        console.log('contenido nuevo archivo: '+ contenido.toString());
+    }
+});
+
+fs.appendFile('./modulosfuncionales/archivonuevo.txt',"nuevo texto adicionado al archivo",function(error){
+    if(error){
+        console.log(error);
+    }else{
+        console.log('El archivo fue modificado');
+    }
+});
+
+fs.unlink('./modulosfuncionales/archivonuevo.txt',function(error){
+    if(error){
+        console.log(error);
+    }else{
+        console.log('El archivo fue eliminado');
+    }
+})
