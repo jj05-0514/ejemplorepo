@@ -28,7 +28,7 @@ console.log("despues de setInmediate");
 //console.log("antes de setInterval");
 
 //*********************************************** */
-fs.writeFile('./modulosfuncionales/archivo.txt', 'Hola mundo',
+fs.writeFileSync('./modulosfuncionales/archivo.txt', 'Hola mundo',
     function (err) {
         if (err) {
             console.log(err);
@@ -37,7 +37,8 @@ fs.writeFile('./modulosfuncionales/archivo.txt', 'Hola mundo',
             console.log('El archivo fue creado');
         }
     });
-fs.readFile('./modulosfuncionales/archivo.txt', function (err, contenido) {
+
+fs.readFileSync('./modulosfuncionales/archivo.txt', function (err, contenido) {
     if (err) {
         console.log(err);
     }
@@ -47,3 +48,33 @@ fs.readFile('./modulosfuncionales/archivo.txt', function (err, contenido) {
     }
 }
 );
+fs.renameSync('./modulosfuncionales/archivo.txt', './modulosfuncionales/archivonuevo.txt',function(error){
+    if (error) {
+        console.log(error);
+    }
+    else {
+        console.log('El archivo fue renombrado');
+    
+}
+  }
+);
+
+fs.appendFileSync('./modulosfuncionales/archivonuevo.txt', "/nuevo texto adicionado al archivo", function (error){
+    if (error) {
+        console.log(error);
+    }
+    else {
+        console.log('El archivo fue modificado');
+    
+}
+});
+
+fs.unlink ('./modulosfuncionales/archivonuevo.txt', function(error){
+    if (error) {
+        console.log(error);
+    }
+    else {
+        console.log('El archivo fue eliminado');
+
+}
+  });
