@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const port = 3000
 
+
 //************************************************************ */
 //        middleware 
 app.use(express.static(__dirname + '/paginas'));
@@ -59,4 +60,12 @@ app.post('/formulario',validacionFormulario,(req,res)=>{
 
 app.listen(port, () => {
   console.log(`Servidor activo escuchando en el puerto http://localhost:${port}`)
+=======
+app.get('/', (req, res)=> {
+    res.send('hola mundo!')
+})
+
+app.listen(port, () => {
+    console.log(`servidor activo escuchando en el puerto http://localhost:${port}`)
+
 })
