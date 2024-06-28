@@ -8,6 +8,19 @@
 </head>
 <body>
     <h1>Formulario de registro</h1>
+    
+    <div>
+        <form action="/api/personas"method="get">
+        <input type="submit" value="leer">  
+        </form>
+        <form action="/api/personas/usuario"method="get">
+            <input type="number" id="id" name="id" min="1" max="10" step="1">
+            <input type="submit" value="leerUsuario">  
+            </form>
+
+    </div>
+
+
     <form action="/formulario" method="post">
         <label for="nombre">Nombre:</label>
         <input type="text" name="nombre" id="nombre" required>

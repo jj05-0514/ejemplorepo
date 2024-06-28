@@ -49,23 +49,39 @@ app.get('/saludo/:nombre', (req, res) => {
 })
 
 app.post('/formulario',validacionFormulario,(req,res)=>{
-  const nombre=req.body.nombre;
-  const correo=req.body.email;
-  const contrasena=req.body.password;
-  console.log(`Hola ${nombre}! tu correo es ${correo} y tu contraseña es ${contrasena}`)
-  res.send(`Hola ${nombre}! tu correo es ${correo} y tu contraseña es ${contrasena}`);  
+  const nom=req.body.nombre;
+  const corr=req.body.email;
+  const contr=req.body.password;
+  cont=cont+1;
+  console.log(`Hola ${nom}! tu correo es ${corr} y tu contraseña es ${contr}`)
+  const persona1={id:cont,nombre:nom,correo:corr,contrasena:contr};
+  personas.push(persona1);
+  res.send(`Hola ${nom}! tu correo es ${corr} y tu contraseña es ${contr}`);  
 })
 
+//****************** */
+// CRUD para un arreglo
+const personas=[{id:1,nombre:"juan",correo:"juan@email.com",contrasena:"123456"}];
+let cont=1;
 
+app.get('/api/personas',(req,res)=>
+{console.log(personas);
+  res.json(personas);
+});
 
-app.listen(port, () => {
+app.get('/api/personas/usuario',(req,res)=>
+  {const id=req.body.id;
+    console.log("este es el identificador",id);
+    const persona=persona.find((persona)=>persona.id==id);
+    if(!persona){
+      res.status(404).send('No hay registro')
+    }
+    else{console.log(persona);
+      res.json(persona);
+    }
+    
+  });
+
+app.listen(port, () =>{
   console.log(`Servidor activo escuchando en el puerto http://localhost:${port}`)
-=======
-app.get('/', (req, res)=> {
-    res.send('hola mundo!')
-})
-
-app.listen(port, () => {
-    console.log(`servidor activo escuchando en el puerto http://localhost:${port}`)
-
 })
