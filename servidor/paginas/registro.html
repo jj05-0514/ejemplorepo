@@ -10,11 +10,12 @@
     <h1>Formulario de registro</h1>
 
     <div>
-        <form action="/api/personas" method="get">
+        <form action="/usuarios" method="get">
         <input type="submit" value="leer">
         </form>
-        <form action="/api/personas/usuario" method="post">
+        <form action="/usuario/nombre" method="post">
             <input type="text" id="id" name="id" >
+            <input type="string" id="nombre" name="nombre" required>
             <input type="submit" value="leerUsuario">
         </form>
     </div>
@@ -22,7 +23,7 @@
 
 
 
-    <form action="/formulario" method="post">
+    <form action="/crearUsuario" method="post">
         <label for="nombre">Nombre:</label>
         <input type="text" name="nombre" id="nombre" required>
         <br>        
