@@ -1,6 +1,8 @@
 const express = require('express')
 const app = express()
+const mongoose = require('mongoose')
 const port = 3000
+const uriBD = "mongodb://localhost:27017/BaseDatos"
 
 
 //************************************************************ */
@@ -82,7 +84,30 @@ app.post('/api/personas/usuario',(req,res)=>{
   }
 });
 
+/***************************************** */
+// conexion a la base de datos
 
+const connectDB = async () => {
+  try {
+      await mongoose.connect('mongodb://localhost:27017/BaseDatos')
+          .then(() => console.log('Conexión a MongoDB establecida'))            
+  }
+  catch(err) {
+      console.error('Error al conectar a MongoDB:', err);
+  }
+}
+
+connectDB();
+
+//**************************** */
+// esquema base de datos
+const Schema = mongoose.Schema;
+const userSchema = new Schema({
+  nombre: String,
+  correo: String,
+  contrasena: String,
+});
+const user = mongoose.model('user', userSchema);
 
 
 
