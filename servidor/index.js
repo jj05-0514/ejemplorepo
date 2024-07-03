@@ -1,6 +1,8 @@
-const express = require('express')
+const express = require('express');
+const mongoose=require('mongoose')
 const app = express()
 const port = 3000
+const uriBD="mongodb://localhost:27017/BaseDatos";
 
 
 //************************************************************ */
@@ -35,6 +37,7 @@ const validacionFormulario=(req,res,next)=>{
   }
 }
 
+
 //************************************************************ */
 //  rutas de api
 app.get('/', (req, res) => {
@@ -59,6 +62,8 @@ app.post('/formulario',validacionFormulario,(req,res)=>{
   res.send(`Hola ${nom}! tu correo es ${corr} y tu contraseña es ${contr}`);  
 })
 
+
+
 //****************** */
 // CRUD para un arreglo
 const personas=[{id:1,nombre:"juan",correo:"juan@email.com",contrasena:"123456"}];
@@ -82,14 +87,71 @@ app.get('/api/personas/usuario',(req,res)=>
     
   });
 
+/************************************* */
+//conexion a la base de datos
+
+const connectDB = async () => {
+  try {
+      await mongoose.connect('mongodb://localhost:27017/BaseDatos')
+          .then(() => console.log('Conexión a MongoDB establecida'))            
+  }
+  catch(err) {
+      console.error('Error al conectar a MongoDB:', err);
+  }
+}
+
+connectDB();
+
+
+
+
+//*********************************** */
+//esquema de base de datos
+const Schema= mongoose.Schema;
+const userSchema= new Schema({
+  nombre:String,
+  correo:String,
+  contrasena:String,
+});
+const User=mongoose.model('User',userSchema);
+
+
+/************************************ */
+//crear un usuario
+
+app.post('/crearUsuario',validacionFormulario,async (req,res)=>{
+  const nombre= req.body.nombre;
+  const correo=req.body.email;
+  const contrasena = req.body.password;
+  const user=new User({nombre:nombre, correo: correo, contrasena:contrasena});
+  await user.save()
+  res.send('Usuario creado');
+})
+
+/************************************* */
+//Obtener todos los usuarios
+
+app.get('/usuarios',async (req,res)=>{
+  const users= await User.find();
+    res.send(users);
+})
+/******************************* */
+//obtener un usuario por nombre
+app.post('/usuario/nombre', async (req,res)=>{
+  const nomb=req.body.nombre;
+  console.log(nomb);
+  const user =await User.findOne({nombre:nomb});
+  if(!user){
+    res.send('Usuario no encontrado');
+
+  }else{
+    res.send(user);
+    console.log(user);
+  }
+})
+
+
 app.listen(port, () =>{
   console.log(`Servidor activo escuchando en el puerto http://localhost:${port}`)
-=======
-app.get('/', (req, res)=> {
-    res.send('hola mundo!')
-})
+});
 
-app.listen(port, () => {
-    console.log(`servidor activo escuchando en el puerto http://localhost:${port}`)
-
-})
