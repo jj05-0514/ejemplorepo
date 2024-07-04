@@ -10,18 +10,34 @@
     <h1>Formulario de registro</h1>
 
     <div>
+        <h2>Formulario de lectura de Datos</h2>
         <form action="/usuarios" method="get">
         <input type="submit" value="leer">
         </form>
+        <h2>Formulario Busqueda Nombre</h2>
         <form action="/usuario/nombre" method="post">
             <input type="text" id="id" name="id" >
             <input type="string" id="nombre" name="nombre" required>
             <input type="submit" value="leerUsuario">
         </form>
+        <h2>Formulario de actualizacion por nombre</h2>
+        <form action="/usuario/actualizacionNombre" method="post">
+            <label for="nombre">Nombre de Busqueda: </label>            
+            <input type="string" id="nombre" name="nombre" required><br>
+            <label for="nuevonombre">Nombre actualizado: </label> 
+            <input type="string" id="nuevonombre" name="nuevonombre" required><br>
+            <label for="nuevoemail">Correo actualizado: </label> 
+            <input type="string" id="nuevoemail" name="nuevoemail" required><br>
+            <label for="nuevopassword">Contraseña actualizada: </label>
+            <input type="password" id="nuevopassword" name="nuevopassword" required><br>
+            <input type="submit" value="ActualizarUsuario">  
+        </form>
+        <h2>Eliminar usuariuo por nombre</h2>
+        <form action="/usuario/eliminar" method="post">
+            <input type="string" id="nombre" name="nombre" required>
+            <input type="submit" value="Eliminar">
+        </form>
     </div>
-
-
-
 
     <form action="/crearUsuario" method="post">
         <label for="nombre">Nombre:</label>
