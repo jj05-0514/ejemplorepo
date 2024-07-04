@@ -124,33 +124,88 @@ app.post('/crearUsuario',validacionFormulario,async (req,res)=>{
   const correo=req.body.email;
   const contrasena = req.body.password;
   const user=new User({nombre:nombre, correo: correo, contrasena:contrasena});
+  try{
   await user.save()
   res.send('Usuario creado');
+  console.log('usuario creado');
+  }
+  catch(err){
+  res.send('Error al crear usuario',err);
+  }
 })
 
 /************************************* */
 //Obtener todos los usuarios
 
 app.get('/usuarios',async (req,res)=>{
+ try{ 
   const users= await User.find();
     res.send(users);
+    console.log(users);
+ }
+ catch (err){
+  res.send('Error al obtener usuarios',err);
+ }
 })
 /******************************* */
 //obtener un usuario por nombre
 app.post('/usuario/nombre', async (req,res)=>{
   const nomb=req.body.nombre;
   console.log(nomb);
+  try{
   const user =await User.findOne({nombre:nomb});
   if(!user){
     res.send('Usuario no encontrado');
-
   }else{
     res.send(user);
     console.log(user);
+  }}
+  catch(err){
+  res.send('Error al obtener usuario',err);
   }
 })
 
+//********************************** */
+//actualizar un usuario por nombre 
+app.post('/usuario/actualizacionNombre',async(req,res)=>{
+  const nomb=req.body.nombre;
+  const nuevonombre=req.body.nuevonombre;
+  const nuevocorreo=req.body.nuevoemail;
+  const nuevacontrasena=req.body.nuevopassword;
+  try{
+    const userUpdate=await User.findOneAndUpdate({nombre:nomb},{nombre:nuevonombre,correo:nuevocorreo,contrasena:nuevacontrasena},{new:true,runValidators:true});
+    if(!userUpdate){
+      res.send('Usuario no actualizado');
+    }else{
+      res.send(userUpdate);
+      console.log('Usuario actualizado');
+    }
+  }
+  catch (err) {
+    res.send('Error al actualizar usuario', err);
+  }
+})
+/*********************************** */
+//Eliminar un Usuario por nombre
+app.post('/usuario/eliminar',async (req,res)=>{
+  const nomb=req.body.nombre;
+  try{
+    const user=awaitUser.findOneAndUpdate({nombre:nomb});
+    if(!user){
+      res.send('usuariro no encontrado');
+    }else {
+      res.send('Usuario eliminado');
+      console.log('Usuario eliminado');
+    }
+  }
+  catch (err) {
+    res.send('Error al eliminar usuario', err);
+  }
+})
+  
 
+
+//leer lo q imprimimos en el servidor
 app.listen(port, () =>{
   console.log(`Servidor activo escuchando en el puerto http://localhost:${port}`)
 });

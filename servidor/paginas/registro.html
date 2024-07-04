@@ -7,7 +7,7 @@
     <title>registro</title>
 </head>
 <body>
-    <h1>Formulario de registro prueba</h1>
+    <h1>Formulario de lectura de datos</h1>
     
     <div>
         <form action="/usuarios"method="get">
@@ -19,11 +19,11 @@
             <input type="submit" value="leerUsuario">  
         </form>
 
+
     </div>
 
-
     <h1> Formulario de Registro</h1><br>
-
+<div>
 
     <form action="/crearUsuario" method="post">
         <label for="nombre">Nombre:</label>
@@ -37,5 +37,29 @@
         <br>        
         <input type="submit" value="Registrarse">
     </form>
+</div>
+<div>
+
+    <h2>Formulario de actualizacion por nombre</h2><br>
+    <form action="/usuario/actualizacionNombre" method="post">
+        <label for="nombre">Nombre de Busqueda: </label>            
+        <input type="string" id="nombre" name="nombre" required><br>
+        <label for="nuevonombre">Nombre actualizado: </label> 
+        <input type="string" id="nuevonombre" name="nuevonombre" required><br>
+        <label for="nuevoemail">Correo actualizado: </label> 
+        <input type="string" id="nuevoemail" name="nuevoemail" required><br>
+        <label for="nuevopassword">Contraseña actualizada: </label>
+        <input type="password" id="nuevopassword" name="nuevopassword" required>
+        <input type="submit" value="ActualizarUsuario">  
+</form>
+</div>
+
+<h2>Eliminar usuario por nombre</h2>
+<div>
+    <form action="/usuario/eliminar" method="post">
+            <input type="string" id="nombre" name="nombre" required>
+            <input type="submit" value="Eliminar">  
+        </form>
+    </div>
 </body>
 </html>
