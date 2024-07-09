@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const path = require('path');
 const app = express()
 const port = 3000
 
@@ -9,7 +10,7 @@ const port = 3000
 app.use(express.static(__dirname + '/paginas'));
 app.set('view engine', 'html');
 app.use(express.urlencoded({ extended: true }));
-//app.use(express.json());
+app.use(express.json());
 
 
 
@@ -21,7 +22,7 @@ app.use((req, res, next) => {
 })
 
 const validacionFormulario = (req, res, next) => {
-  const nombre = req.body.nombre;
+  const nombre = req.body.nombre;  
   const correo = req.body.email;
   const contrasena = req.body.password;
   if (!nombre) {
@@ -111,7 +112,7 @@ app.post('/crearUsuario', validacionFormulario, async (req, res) => {
 app.get('/usuarios', async (req, res) => {
   try {
     const users = await User.find();
-    res.send(users);
+    res.json(users);
     console.log(users);
   }
   catch (err) {
@@ -175,6 +176,12 @@ app.post('/usuario/eliminar', async (req, res) => {
   catch (err) {
     res.send('Error al eliminar usuario', err);
   }
+});
+
+//*************************************** */
+//      Ruta para usuario creado
+app.get('/usuarioCreado', (req, res) => {
+  res.sendFile(path.join(__dirname, '/paginas/usuarioCreado.html'));
 });
 
 
