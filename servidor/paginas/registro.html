@@ -17,13 +17,13 @@
         <h2>Formulario Busqueda Nombre</h2>
         <form action="/usuario/nombre" method="post">
             <input type="text" id="id" name="id" >
-            <input type="string" id="nombre" name="nombre" required>
+            <input type="string" id="nombre1" name="nombre" required>
             <input type="submit" value="leerUsuario">
         </form>
         <h2>Formulario de actualizacion por nombre</h2>
         <form action="/usuario/actualizacionNombre" method="post">
             <label for="nombre">Nombre de Busqueda: </label>            
-            <input type="string" id="nombre" name="nombre" required><br>
+            <input type="string" id="nombre2" name="nombre" required><br>
             <label for="nuevonombre">Nombre actualizado: </label> 
             <input type="string" id="nuevonombre" name="nuevonombre" required><br>
             <label for="nuevoemail">Correo actualizado: </label> 
@@ -34,14 +34,14 @@
         </form>
         <h2>Eliminar usuario por nombre</h2>
         <form action="/usuario/eliminar" method="post">
-            <input type="string" id="nombre" name="nombre" required>
+            <input type="string" id="nombre3" name="nombre" required>
             <input type="submit" value="Eliminar">
         </form>
     </div>
 <h2>Crear Usuario</h2>
     <form action="/crearUsuario" method="post">
         <label for="nombre">Nombre:</label>
-        <input type="text" name="nombre" id="nombre" required>
+        <input type="text" name="nombre4" id="nombre" required>
         <br>        
         <label for="email">Email:</label>
         <input type="email" name="email" id="email" required>
@@ -51,5 +51,12 @@
         <br>        
         <input type="submit" value="Registrarse">
     </form>
+    <div>
+        <h2>Uso de Axios</h2>
+        <p id="respuesta" name="respuesta"></p>
+        <button id="boton">Llamada</button>
+    </div>
+    <script type="module" src='programa.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </body>
 </html>

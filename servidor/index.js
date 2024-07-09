@@ -10,7 +10,7 @@ const port = 3000
 app.use(express.static(__dirname + '/paginas'));
 app.set('view engine', 'html');
 app.use(express.urlencoded({ extended: true }));
-//app.use(express.json());
+app.use(express.json());
 
 
 
