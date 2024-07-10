@@ -172,7 +172,7 @@ app.post('/usuario/actualizacionnombre', async (req, res) => {
     if (!userUpdate) {
       res.send('Usuario no actualizado');
     } else {
-      res.send(userUpdate);
+      res.send('Usuario actualizado');
       console.log('Usuario actualizado');
     }
     
