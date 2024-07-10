@@ -46,6 +46,9 @@ async function crearRegistro(){
 
 document.getElementById('boton').addEventListener('click',crearRegistro);
 
+//***************************************** */
+// obtener todos los usuarios
+
 async function cargarDatos() {
         try{
             const respuesta= await axios.get('/usuarios')        
@@ -54,8 +57,8 @@ async function cargarDatos() {
           userList.innerHTML = ''; 
             respuesta.data.forEach(user => {
             const option = document.createElement('option');
-            option.value = user.id;
-            option.textContent = `${user.nombre} : ${user.correo}`;
+            option.value = `${user.nombre}`;
+            option.textContent = `${user.nombre}:${user.correo}:${user.contrasena}`;
             userList.appendChild(option);
           });
         }
@@ -64,5 +67,22 @@ async function cargarDatos() {
         console.log(error); 
       }      
   }
+  cargarDatos();
 
-  document.getElementById('boton2').addEventListener('click',cargarDatos);
+//***************************************** */
+// obtener un usuario por nombre
+async function buscarUsuario(){
+    const userList=document.getElementById('listaUsuarios');
+    const nomb = userList.value;
+    console.log(nomb);
+    try{
+        const respuesta= await axios.post('/usuario/nombre',{
+            nombre:nomb })
+        document.getElementById('respuesta').innerHTML=`${respuesta.data.nombre} ${respuesta.data.correo} ${respuesta.data.contrasena}` ;
+        console.log(respuesta.data);
+    }
+    catch(error){
+        console.log(error);
+    }
+}
+  document.getElementById('boton2').addEventListener('click',buscarUsuario);

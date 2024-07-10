@@ -112,7 +112,7 @@ app.post('/crearUsuario', validacionFormulario, async (req, res) => {
 app.get('/usuarios', async (req, res) => {
   try {
     const users = await User.find();
-    res.json(users);
+    res.send(users);
     console.log(users);
   }
   catch (err) {
