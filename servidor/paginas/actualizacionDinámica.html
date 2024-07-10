@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>usoAxios</title>
+    <title>ActDinamica</title>
 </head>
 <body>
     <nav>
@@ -13,7 +13,7 @@
         <a href="registro.html">Registro</a>
     </nav>
        
-    <form>
+    <form id="FormRegistro">
         <label for="nombre">Nombre:</label>
         <input type="text" name="nombre" id="nombre" required>
         <br>
@@ -26,12 +26,7 @@
     </form>
     <p id="respuesta"></p>
     <button id="boton">Enviar</button>
-
-    <h2>Lista de Usuarios</h2>
-    <select id="listaUsuarios"></select>
-    <button id="boton2">ObtenerUsuarios</button>
-
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script type="module" src='programa.js'></script>
+    <script type="module" src='programaAxios.js'></script>
 </body>
 </html>

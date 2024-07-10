@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
+const path = require('path');
 const port = 3000
 
 
@@ -197,6 +198,11 @@ app.post('/usuario/eliminar', async (req, res) => {
   }
 }); 
 
+//*************************************** */
+//      Ruta para usuario creado
+app.get('/usuarioCreado', (req, res) => {
+  res.sendFile(path.join(__dirname, '/paginas/usuarioCreado.html'));
+});
 
 app.listen(port, () => {
   console.log(`servidor activo escuchando en el puerto http://localhost:${port}`)
