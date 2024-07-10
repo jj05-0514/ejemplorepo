@@ -29,8 +29,22 @@
 
     <h2>Lista de Usuarios</h2>
   <select id="listaUsuarios"></select>
-  <button id="boton2">ObtenerUsuarios</button>
   <p id="respuesta"></p>
+  <button id="boton2">ObtenerUsuarios</button>
+  
+
+    <h2>Busqueda por nombre</h2>
+    <input type="text" id="busqueda" placeholder="Ingresar nombre de usuario a buscar" required>
+    <p id="respuesta2"></p>
+    <button id="boton3">Buscar</button>
+
+    <h2>Actualización por nombre</h2>
+    <select id="listaUsuarios2"></select>
+    <input type="text" id="nuevoNombre" name="nuevoNombre" required>
+    <input type="email" id="nuevoCorreo" name="nuevoCorreo" required>
+    <input type="text" id="nuevaContrasena" name="nuevaContrasena" required>
+    <p id="respuesta3"></p>
+    <button id="boton4">Actualizar registro</button>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src='programa.js'></script>
