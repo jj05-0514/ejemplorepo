@@ -163,5 +163,43 @@ async function actualizarRegistro(){
     }
 }
 
-document.getElementById('listaUsuarios2').addEventListener('change',llenarDatos);
-document.getElementById('boton4').addEventListener('click',actualizarRegistro);
+
+//************************************ */
+//eliminar usuario
+
+async function cargarDatos3() {
+    try{
+        const respuesta= await axios.get('/usuarios')        
+    if (respuesta.data) {           
+      const userList = document.getElementById('listaUsuarios3');
+      userList.innerHTML = ''; 
+        respuesta.data.forEach(user => {
+        const option = document.createElement('option');
+        option.value = `${user.nombre}`;
+        option.textContent = `${user.nombre}`;
+        userList.appendChild(option);
+      });
+    }
+}
+catch(error){
+    console.log(error); 
+  }      
+}
+cargarDatos3();
+
+async function eliminarUsuario(){
+    const nomb = document.getElementById('listaUsuarios3').value;
+    console.log(nomb);
+    try{
+        const respuesta= await axios.post('/usuario/eliminar',{
+            nombre:nomb })
+        document.getElementById('respuesta4').innerHTML=respuesta.data;
+        console.log(respuesta.data);
+    }
+    catch(error){
+        console.log(error);
+    }
+}
+document.getElementById('boton5').addEventListener('click', eliminarUsuario);
+//document.getElementById('listaUsuarios2').addEventListener('change',llenarDatos);
+//document.getElementById('boton4').addEventListener('click',actualizarRegistro);
