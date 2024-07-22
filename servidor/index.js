@@ -86,7 +86,9 @@ app.post('/api/personas/usuario',(req,res)=>{
 
 
 
+
 app.listen(port, () => {
     console.log(`servidor activo escuchando en el puerto http://localhost:${port}`)
 
 })
+
