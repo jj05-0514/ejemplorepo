@@ -163,7 +163,6 @@ async function actualizarRegistro(){
     }
 }
 
-
 //************************************ */
 //eliminar usuario
 
