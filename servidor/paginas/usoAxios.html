@@ -15,12 +15,15 @@
     <form>
         <label for="nombre">Nombre:</label>
         <input type="text" name="nombre" id="nombre" required>
+        <p id="advertencia"></p>
         <br>
         <label for="email">Email:</label>
         <input type="email" name="email" id="email" required>
+        <p id="advertencia2"></p>
         <br>
         <label for="password">Contraseña:</label>
         <input type="password" name="password" id="password" required>
+        <p id="advertencia3"></p>
         <br>        
     </form>
     
@@ -45,6 +48,11 @@
     <input type="text" id="nuevaContrasena" name="nuevaContrasena" required>
     <p id="respuesta3"></p>
     <button id="boton4">Actualizar registro</button>
+
+    <h2>Eliminar por nombre</h2>
+    <select id="listaUsuarios3"></select>
+    <p id="respuesta4"></p>
+    <button id="boton5">Eliminar registro</button>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="module" src='programa.js'></script>
