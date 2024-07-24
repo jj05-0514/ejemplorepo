@@ -8,6 +8,7 @@ const connectDB = require('./conexiones/conexionBD');
 const BaseDatos = require('./rutas/rutasBD');
 
 
+
 //************************************************************ */
 //        middleware 
 app.use(express.static(__dirname + '/public'));

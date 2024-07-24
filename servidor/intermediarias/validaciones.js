@@ -15,3 +15,5 @@ const validacionFormulario = (req, res, next) => {
       next();
     }
   }
+
+  module.exports = validacionFormulario;

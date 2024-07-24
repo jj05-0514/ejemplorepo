@@ -117,7 +117,7 @@ document.getElementById('boton3').addEventListener('click', buscarUsuario2);
 // actualizar datos por nombre
 async function cargarDatos2() {
     try {
-        const respuesta = await axios.get('bd/usuarios/nombre')
+        const respuesta = await axios.get('bd/usuarios')
         if (respuesta.data) {
             const userList = document.getElementById('listaUsuarios2');
             userList.innerHTML = '';
