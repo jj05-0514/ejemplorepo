@@ -33,7 +33,7 @@ async function crearRegistro() {
         const correo = document.getElementById('email').value;
         const contrasena = document.getElementById('password').value;
         try {
-            const respuesta = await axios.post('/crearUsuario', {
+            const respuesta = await axios.post('bd/usuarios', {
                 nombre: nomb,
                 email: correo,
                 password: contrasena
@@ -57,7 +57,7 @@ document.getElementById('boton').addEventListener('click', crearRegistro);
 
 async function cargarDatos() {
     try {
-        const respuesta = await axios.get('/usuarios')
+        const respuesta = await axios.get('bd/usuarios')
         if (respuesta.data) {
             const userList = document.getElementById('listaUsuarios');
             userList.innerHTML = '';
@@ -81,7 +81,7 @@ async function buscarUsuario() {
     const nomb = document.getElementById('listaUsuarios').value;
     console.log(nomb);
     try {
-        const respuesta = await axios.post('/usuario/nombre', {
+        const respuesta = await axios.post('bd/usuarios/nombre', {
             nombre: nomb
         })
         document.getElementById('respuesta').innerHTML = `${respuesta.data.nombre} ${respuesta.data.correo} ${respuesta.data.contrasena}`;
@@ -100,7 +100,7 @@ async function buscarUsuario2() {
     const nomb = document.getElementById('busqueda').value;
     console.log(nomb);
     try {
-        const respuesta = await axios.post('/usuario/nombre', {
+        const respuesta = await axios.post('bd/usuarios/nombre', {
             nombre: nomb
         })
         document.getElementById('respuesta2').innerHTML = `${respuesta.data.nombre} ${respuesta.data.correo} ${respuesta.data.contrasena}`;
@@ -117,7 +117,7 @@ document.getElementById('boton3').addEventListener('click', buscarUsuario2);
 // actualizar datos por nombre
 async function cargarDatos2() {
     try {
-        const respuesta = await axios.get('/usuarios')
+        const respuesta = await axios.get('bd/usuarios/nombre')
         if (respuesta.data) {
             const userList = document.getElementById('listaUsuarios2');
             userList.innerHTML = '';
@@ -139,7 +139,7 @@ async function llenarDatos() {
     const nomb = document.getElementById('listaUsuarios2').value;
     console.log(nomb);
     try {
-        const respuesta = await axios.post('/usuario/nombre', {
+        const respuesta = await axios.post('bd/usuarios/nombre', {
             nombre: nomb
         })
         document.getElementById('nuevoNombre').value = `${respuesta.data.nombre}`;
@@ -159,7 +159,7 @@ async function actualizarRegistro() {
     const corr = document.getElementById('nuevoCorreo').value;
     const contra = document.getElementById('nuevaContrasena').value;
     try {
-        const respuesta = await axios.post('/usuario/actualizacionNombre', {
+        const respuesta = await axios.put('bd/usuarios/nombre', {
             nombre: nomb,
             nuevonombre: nombnuevo,
             nuevocorreo: corr,
@@ -178,7 +178,7 @@ document.getElementById('boton4').addEventListener('click', actualizarRegistro);
 //eliminar usuario
 async function cargarDatos3() {
     try {
-        const respuesta = await axios.get('/usuarios')
+        const respuesta = await axios.get('bd/usuarios')
         if (respuesta.data) {
             const userList = document.getElementById('listaUsuarios3');
             userList.innerHTML = '';
@@ -199,7 +199,7 @@ async function eliminarUsuario() {
     const nomb = document.getElementById('listaUsuarios3').value;
     console.log(nomb);
     try {
-        const respuesta = await axios.post('/usuario/eliminar', {
+        const respuesta = await axios.delete('bd/usuarios/nombre', {
             nombre: nomb
         })
         document.getElementById('respuesta4').innerHTML = respuesta.data;

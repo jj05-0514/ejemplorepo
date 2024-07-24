@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const User = require('../modelos/modeloMDB');
+const User = require('../modelos/modeloBD');
 
 /*************************************************** */
 // Crear un usuario
@@ -94,6 +94,6 @@ const crearUsuario= async (req, res) => {
         obtenerUsuarios,
         obtenerUsuarioNombre,
         actualizarUsuarioNombre,
-        eliminarUsuario
+        eliminarUsuarioNombre
     }
 

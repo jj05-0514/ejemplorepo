@@ -10,7 +10,7 @@ const BaseDatos = require('./rutas/rutasBD');
 
 //************************************************************ */
 //        middleware 
-app.use(express.static(__dirname + '/paginas'));
+app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'html');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
