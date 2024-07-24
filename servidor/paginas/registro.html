@@ -7,24 +7,41 @@
     <title>registro</title>
 </head>
 <body>
-    <h1>Formulario de registro</h1>
-
+    <h1>Formulario pruebas</h1>
     <div>
-        <form action="/api/personas" method="get">
-        <input type="submit" value="leer">
+        <h2>Formulario de lectura de datos</h2>
+        <form action="/usuarios"method="get">
+        <input type="submit" value="leer">  
         </form>
-        <form action="/api/personas/usuario" method="post">
-            <input type="text" id="id" name="id" >
-            <input type="submit" value="leerUsuario">
+        <h2>Formulario de busqueda por nombre</h2>
+        <form action="/usuario/nombre" method="post">
+            <input type="number" id="id" name="id" min="1" max="10" step="1">
+            <input type="string" id="nombre1" name="nombre" required>
+            <input type="submit" value="leerUsuario">  
+        </form>
+            <h2>Formulario de actualizacion por nombre</h2>
+        <form action="/usuario/actualizacionNombre" method="post">
+            <label for="nombre">Nombre de Busqueda: </label>            
+            <input type="string" id="nombre2" name="nombre" required><br>
+            <label for="nuevonombre">Nombre actualizado: </label> 
+            <input type="string" id="nuevonombre" name="nuevonombre" required><br>
+            <label for="nuevoemail">Correo actualizado: </label> 
+            <input type="string" id="nuevoemail" name="nuevoemail" required><br>
+            <label for="nuevopassword">Contraseña actualizada: </label>
+            <input type="password" id="nuevopassword" name="nuevopassword" required><br>
+            <input type="submit" value="ActualizarUsuario">  
+        </form>
+    
+    <h2>Eliminar usuario por nombre</h2>
+        <form action="/usuario/eliminar" method="post">
+            <input type="string" id="nombre3" name="nombre" required>
+            <input type="submit" value="Eliminar">  
         </form>
     </div>
-
-
-
-
-    <form action="/formulario" method="post">
+    <h1>Formulario de registro</h1>
+    <form action="/crearUsuario" method="post">
         <label for="nombre">Nombre:</label>
-        <input type="text" name="nombre" id="nombre" required>
+        <input type="text" name="nombre" id="nombre4" required>
         <br>        
         <label for="email">Email:</label>
         <input type="email" name="email" id="email" required>
@@ -34,6 +51,12 @@
         <br>        
         <input type="submit" value="Registrarse">
     </form>
-    <script src='programa.js'></script>
+    <div>
+        <h2>Uso de Axios</h2>
+        <p id="respuesta" name="respuesta"></p>
+        <button id="boton">Llamada</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src='programa.js'></script>
 </body>
 </html>
