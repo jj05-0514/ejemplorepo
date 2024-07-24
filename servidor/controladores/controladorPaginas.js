@@ -1,3 +1,4 @@
+const path = require('path');
 /************************************ */
 // servir pagina de inicio
 const pagHome= (req, res) => {

@@ -9,6 +9,6 @@ const userSchema = new Schema({
   contrasena: String
 });
 
-const User = mongoose.model('User', userSchema);
+const Usuario = mongoose.model('Usuario', userSchema);
 
-module.exports = User;
+module.exports = Usuario;

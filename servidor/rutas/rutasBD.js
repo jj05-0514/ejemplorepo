@@ -1,12 +1,12 @@
 const express = require('express');
-const router = express.Router();
+const rutas = express.Router();
 const BaseDatos=require('../controladores/controladorBD.js')
 const validacion=require('../intermediarias/validaciones');
 
-router.get('/usuarios', BaseDatos.obtenerUsuarios);
-router.post('/usuarios', validacion,BaseDatos.crearUsuario);
-router.post('/usuarios/nombre', BaseDatos.obtenerUsuarioNombre);
-router.put('/usuarios/nombre', BaseDatos.actualizarUsuarioNombre);
-router.delete('/usuarios/nombre', BaseDatos.eliminarUsuarioNombre);
+rutas.get('/usuarios', BaseDatos.obtenerUsuarios);
+rutas.post('/usuarios', validacion,BaseDatos.crearUsuario);
+rutas.post('/usuarios/nombre', BaseDatos.obtenerUsuarioNombre);
+rutas.put('/usuarios/nombre', BaseDatos.actualizarUsuarioNombre);
+rutas.delete('/usuarios/nombre', BaseDatos.eliminarUsuarioNombre);
 
-module.exports = router;
+module.exports = rutas;

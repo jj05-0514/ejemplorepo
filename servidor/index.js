@@ -15,6 +15,11 @@ app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'html');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+/*
+app.get('/home',(req,res)=>{
+  res.sendFile(path.join(__dirname, '/public/index.html'));
+});*/
+
 
 
 /*********************************************** */

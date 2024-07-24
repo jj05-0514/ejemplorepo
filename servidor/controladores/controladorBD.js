@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const User = require('../modelos/modeloBD');
+const Usuario = require('../modelos/modeloBD');
 
 /*************************************************** */
 // Crear un usuario
@@ -7,7 +7,7 @@ const crearUsuario= async (req, res) => {
     const nombre = req.body.nombre;
     const correo = req.body.email;
     const contrasena = req.body.password;
-    const user = new User({ nombre: nombre, correo: correo, contrasena: contrasena });
+    const user = new Usuario({ nombre: nombre, correo: correo, contrasena: contrasena });
     try {
       await user.save()
       res.send('Usuario creado');
@@ -22,7 +22,7 @@ const crearUsuario= async (req, res) => {
   // Obtener todos los usuarios
   const obtenerUsuarios = async (req, res) => {
     try {
-      const users = await User.find();
+      const users = await Usuario.find();
       res.send(users);
       console.log(users);
     }
@@ -37,7 +37,7 @@ const crearUsuario= async (req, res) => {
     const nomb = req.body.nombre;
     console.log(nomb);
     try {
-      const user = await User.findOne({ nombre: nomb });
+      const user = await Usuario.findOne({ nombre: nomb });
       if (!user) {
         res.send('Usuario no encontrado');
       } else {
@@ -58,7 +58,7 @@ const crearUsuario= async (req, res) => {
     const nuevocorreo = req.body.nuevoemail;
     const nuevacontrasena = req.body.nuevopassword;
     try {
-      const userUpdate = await User.findOneAndUpdate({ nombre: nomb },{nombre:nuevonombre,correo:nuevocorreo,contrasena:nuevacontrasena},{new:true, runValidators:true});
+      const userUpdate = await Usuario.findOneAndUpdate({ nombre: nomb },{nombre:nuevonombre,correo:nuevocorreo,contrasena:nuevacontrasena},{new:true, runValidators:true});
       if (!userUpdate) {
         res.send('Usuario no actualizado');
       } else {
@@ -76,7 +76,7 @@ const crearUsuario= async (req, res) => {
   const eliminarUsuarioNombre= async (req, res) => {
     const nomb = req.body.nombre;
     try {
-      const user = await User.findOneAndDelete({nombre:nomb});
+      const user = await Usuario.findOneAndDelete({nombre:nomb});
       if (!user) {
         res.send('Usuario no encontrado');
       } else {
