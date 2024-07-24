@@ -26,7 +26,6 @@ app.use('/', rutasPaginas);
 app.use('/bd', BaseDatos);
 
 //************************************************************ */
-<<<<<<< HEAD
 //        middleware para manejo de errores
 app.use((req, res) => {
   res.status(404).send('Pagina no encontrada');
@@ -36,30 +35,6 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Algo salió mal!');
 });
-=======
-//  rutRas de api
-app.get('/', (req, res) => {
-  res.send('Hola mundo!')
-})
-app.get('/home', (req, res) => {
-    res.sendFile(__dirname+'/paginas/index.html')
-})
-app.get('/saludo/:nombre', (req, res) => {
-  const nombre=req.params.nombre;
-  res.send(`Hola ${nombre}!`);
-})
-
-app.post('/formulario',validacionFormulario,(req,res)=>{
-  const nom=req.body.nombre;
-  const corr=req.body.email;
-  const contr=req.body.password;
-  cont=cont+1;
-  console.log(`Hola ${nom}! tu correo es ${corr} y tu contraseña es ${contr}`)
-  const persona1={id:cont,nombre:nom,correo:corr,contransena:contr};
-  personas.push(persona1);
-  res.send(`Hola ${nom}! tu correo es ${corr} y tu contraseña es ${contr}`);  
-})
->>>>>>> 26cc057864e73bc9151e6b929e47b0dcc1725239
 
 //***************************************************** */
 //  CRUD para un arreglo
@@ -86,7 +61,6 @@ app.post('/api/personas/usuario',(req,res)=>{
 
 
 
-<<<<<<< HEAD
 /*********************************************** */
 // conexion a base datos
 connectDB();
@@ -94,13 +68,3 @@ connectDB();
 app.listen(port, () => {
   console.log(`Servidor activo escuchando en el puerto http://localhost:${port}`)
 })
-=======
-
-
-
-app.listen(port, () => {
-    console.log(`servidor activo escuchando en el puerto http://localhost:${port}`)
-
-})
-
->>>>>>> 26cc057864e73bc9151e6b929e47b0dcc1725239
