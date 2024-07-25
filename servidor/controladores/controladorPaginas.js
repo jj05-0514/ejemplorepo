@@ -2,7 +2,7 @@ const path = require('path');
 /************************************ */
 // servir pagina de inicio
 const pagHome= (req, res) => {
-  res.sendFile(__dirname + '/public/index.html')
+  res.sendFile(path.resolve(__dirname, '../public/index.html'))
 };
 
 // servir pagina de contacto
