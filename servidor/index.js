@@ -17,6 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 
+
 /*********************************************** */
 // enrutamiento para servir paginas
 app.use('/', rutasPaginas);

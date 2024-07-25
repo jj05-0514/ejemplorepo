@@ -1,3 +1,0 @@
-function conexion(){
-    axios.get('')
-}
